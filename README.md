@@ -1,2 +1,2 @@
 # ecm516
-![Alt text](ecm516/image.png)
+![Alt text](https://github.com/Ilan-Ha/ecm516/blob/main/image.png)
