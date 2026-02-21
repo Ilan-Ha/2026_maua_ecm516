@@ -1,2 +1,2 @@
 # ecm516
-![Alt text](image.png)
+![Uses gitginore extension in vscode by Codezombie](image.png)
