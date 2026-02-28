@@ -107,16 +107,86 @@
 /// coleções    
 /// variavel aponta para lista, lista aponta para os objetos
 /// a lista e dinamica
-v1 = [] /// List <Objects> v1 = new ArrayList <>();
-console.log(v1.length)
-v1[0] = 2
-console.log(v1.length)
-v1[1] = "abc"
-console.log(v1.length)
-v2 =[10] /// lista de tamho 1, na posição 0 tem o 10
-v1[10] = "João" /// comprimento 11
-console.log(v1.length)
-console.log(v1)
-for(let i = 0; i <v1.length; i++){
-    console.log(v1[i])
-}
+// v1 = [] /// List <Objects> v1 = new ArrayList <>();
+// console.log(v1.length)
+// v1[0] = 2
+// console.log(v1.length)
+// v1[1] = "abc"
+// console.log(v1.length)
+// v2 =[10] /// lista de tamho 1, na posição 0 tem o 10
+// v1[10] = "João" /// comprimento 11
+// console.log(v1.length)
+// console.log(v1)
+// for(let i = 0; i <v1.length; i++){
+//     console.log(v1[i])
+// }
+
+/// funções
+    /// function (verbosa) e arrow function
+// function hello(){
+//     console.log('Oi')
+// }
+// hello()
+//     /// sobrecarga
+//         /// em java
+//         /**
+//          * class calculadora{
+//          *  int somar(int a, int b){
+//          *      return a + b
+//          *      }
+//          * String somar(String a, String b){
+//          *      return a + b
+//          *      }
+//          * }
+//          */
+// function hello(nome){
+//     console.log(`Oi, ${nome}`)
+// }
+// hello('Maria')
+// /// por causa da dupla passagem do javascript, não existe sobrecarga de função, a função só é redefinida
+//     /// o mesmo que hello(undefined)
+
+// function soma(a, b){
+//     return a + b
+// }
+// const resultado = soma(2,3)
+// console.log(resultado)
+
+// /// função anonima (não tem nome)
+// /// constante aponta para uma função
+// const dobro = function (n){
+//     return 2*n
+// }
+// console.log(dobro(6))
+
+/// valores padrões para os parâmetros
+
+// const triplo = function ( n = 5){
+//     return 3 * n
+// }
+
+// console.log(triplo()) /// 5 * 3
+// console.log(triplo(undefined)) /// 5 * 3
+// console.log(triplo(1)) /// 1 * 3
+
+    /// arrow functions : () => {} Objeto do tipo arrow function
+        /// vem da calculo lambida
+// const falarOi = () => {console.log('oi')}
+// falarOi()
+
+// const falarOi = (nome) => {console.log(`Oi, ${nome}`)}
+// const falarOi_2 = nome => {console.log(`Oi, ${nome}`)} // só um argumento -> pode omitir ()
+// const falarOi_3 = nome => console.log(`Oi, ${nome}`) // só uma instrução -> pode omitir {}
+
+// falarOi('Maria')
+// falarOi_2('Maria')
+// falarOi_3('Maria')
+
+// const somar = (a, b) => {return a + b}
+// const somar_2 = (a, b) => a + b /// so uma instrução, omitindo chaves e return -> return fica implicito
+// const somar_3 = (a, b) => {a + b} /// calcula e não retorna nada
+
+// console.log(somar(2,3))
+// console.log(somar_2(2,3))
+// console.log(somar_3(2,3))
+
