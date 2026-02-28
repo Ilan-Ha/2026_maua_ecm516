@@ -103,3 +103,20 @@
     /// === -> 2 comparações:
         /// tipo igual?
         /// valor igual?
+
+/// coleções    
+/// variavel aponta para lista, lista aponta para os objetos
+/// a lista e dinamica
+v1 = [] /// List <Objects> v1 = new ArrayList <>();
+console.log(v1.length)
+v1[0] = 2
+console.log(v1.length)
+v1[1] = "abc"
+console.log(v1.length)
+v2 =[10] /// lista de tamho 1, na posição 0 tem o 10
+v1[10] = "João" /// comprimento 11
+console.log(v1.length)
+console.log(v1)
+for(let i = 0; i <v1.length; i++){
+    console.log(v1[i])
+}
