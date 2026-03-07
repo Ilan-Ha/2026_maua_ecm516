@@ -233,3 +233,79 @@
     /// ac = 1, v = 2 numeros[1] -> ac = 1 + 2, v = 3 numeros[2] -> ac = 1 + 2 + 3, v = 4 numeros[3] -> ac = 1 + 2 + 3 + 4, v => reduce finaliza
     /// reduce compacta a coleção em um único valor
 // console.log(res)
+
+// let umaFuncao = function(){
+//     console.log('Fui armazenada em uma variável')
+// }
+
+// umaFuncao()
+
+// function f(funcao){
+//     funcao()
+// }
+
+// f(umaFuncao)
+/// f(umaFuncao()) === undefined() /// uma funcao nao retorna nada entao nada e passado como parametro
+
+// function f2(funcao){
+//     console.log(funcao())
+// }
+
+// let outraFuncao = function(){
+//     console.log('Fui armazenada em uma variável')
+//     return () => 'oi'
+// }
+
+// f2(outraFuncao)
+
+
+// function f (funcao){
+//     funcao
+// }
+
+// function g(){
+//     function outraFuncao(){
+//         console.log('Fui criada por g')
+//         return () => "A"
+//     }
+//     return outraFuncao()
+//     /// return outraFuncao() -> retorna o retorno da função ao invés da função
+// }
+/// g() é uma função
+/// g()() chama g e o retorno de g
+/// g()()( chama g, o retorno de g e o retorno do retorno de g)
+//console.log(g()())
+
+/// f(g) -> não aparece nada
+/// f(g)() -> chamando a função que f devolve
+// /// f(g()) -> chama o que g devolve
+// const res = g()
+// f(res)
+// console.log(res()) /// só assim para devolver o A
+
+    /// clojure
+// function f(idade) {
+//     let nome = 'João'
+//     function g(){
+//         console.log(`Meu nome é ${nome} e tenho ${idade} anos`)
+//     }
+//     return g
+// }
+
+// const res = f(17)
+// res() /// res utiliza uma copia de uma variavel (nome) que deixou de existir, porque g() tinha direito de utilizar (por causa do clojure formado entre f(), g() e idade)
+    
+// const eAgora = () => {
+//     let cont = 1
+//     const f1 = () => console.log(cont)
+//     cont++
+//     const f2 = () => console.log(cont)
+//     cont++
+//     return {f1, f2} /// retorna 1 objeto, que tem as 2 funções dentro
+// }
+
+// const res = eAgora()
+// res.f1()
+// res.f2()
+/// clojure é montado no final (quando a variavel morre [f1 e f2 usam cont = 3])
+
