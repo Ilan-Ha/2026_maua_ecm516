@@ -1,3 +1,6 @@
+/// executar node --watch (nome do arquivo)
+    /// ctrl + c finaliza
+
 // Ctrl k Ctrl c -> coloca //
 // Ctrl k Ctrl u -> tira //
 // rodar -> node (nome.js)
@@ -190,3 +193,43 @@
 // console.log(somar_2(2,3))
 // console.log(somar_3(2,3))
 
+    /// listas / vetores / arrays / arranjos
+// v1 = []
+// console.log(v1.length)
+// v1[0] = 'abc'
+// console.log(v1.length)
+// v1[10] = 2.5
+// console.log(v1.length)
+// console.log(v1)
+// for(let i = 0; i<v1.length; i++){
+//     console.log(v1[i])
+// }
+
+    /// funções -> cidadãos de primeira classe
+
+// const f1 = () => {}
+// const f2 = function(){}
+
+// const nomes = ['Ana Maria', 'Antonio', 'Rodrigo', 'Cristina', 'Alex']
+    /// filter -> higher order function (função que recebe função como parâmetro)
+// const apenasComA = nomes.filter((nome) => {return nome.startsWith('A')}) /// se começa com A retorna true, e o filter usa isso para adicionar ou não
+// /// const apenasComA = nomes.filter(function(nome){return nome.startsWith('A')}) /// igual
+// /// const apenasComA = nomes.filter(nome => {return nome.startsWith('A')}) /// igual
+// /// const apenasComA = nomes.filter(nome => nome.startsWith('A')) /// igual
+// console.log(apenasComA)
+
+/// [A, A, R, C, A ]
+// const iniciais = nomes.map(nome => nome.charAt(0))
+// console.log(iniciais)
+
+// const res = nomes.every(n => n.startsWith('A')) /// é verdade que todo nome começa com A ?
+// const res = nomes.some(n => n.startsWith('A')) /// é verdade que algum nome começa com A ?
+// console.log(res)
+
+
+// const numeros = [1,2,3,4]
+// const res = numeros.reduce((ac, v) => ac + v)
+    /// ac -> acumulador, v -> proximo valor
+    /// ac = 1, v = 2 numeros[1] -> ac = 1 + 2, v = 3 numeros[2] -> ac = 1 + 2 + 3, v = 4 numeros[3] -> ac = 1 + 2 + 3 + 4, v => reduce finaliza
+    /// reduce compacta a coleção em um único valor
+// console.log(res)
