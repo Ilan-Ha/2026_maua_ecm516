@@ -336,5 +336,205 @@
 // console.log(pessoa) /// mostra tudo da pessoas
 
 
+//// Uma concessionaria tem nome, CNPJ e endereço (logradouro, numero e bairro). Elea também tem seu estoque de veículos. A quantidade de veículos é arbritária. A qualquer intante, ela pode ter 2 ou 5 ou 17 veículos. Cada veículo modelo, marca e placa.
+
+// const veiculo = {
+//             modelo: 'Ka',
+//             marca: 'Ford',
+//             palca: 'ABC-1234'
+//         }
+
+// const estoque = veiculo[3]
+
+// const concessionaria = {
+//     nome: 'nome',
+//     CNPJ: '000000000000000/0001-12',
+//     endereco: {
+//         logradouro: 'Rua A',
+//         numero: '2',
+//         bairo: {
+//             nome: 'Vija J'
+//         }
+//     },
+//     estoque: [
+//         {
+//             modelo: 'Ka',
+//             marca: 'Ford',
+//             palca: 'ABC-1234'
+//         },
+//         {
+//             modelo: 'Fusca',
+//             marca: 'VW',
+//             palca: 'ADD-4455'
+//         }
+//     ]
+// }
+// /// estoque é uma lista/vetor 
+
+// console.log(concessionaria.estoque[0].modelo)
+// console.log(concessionaria['estoque'][1]['modelo'])
+
+/// Uma calculadora realiza as quatro operações fundamentais
+    /// soma é representada por uma arrow function que faz return
+    /// subtração: representa por uma arrow function sem return
+    /// multiplicação: function regular
+    /// divisão: voce escolhe
+    /// todas elas operam com 2 operandos
+
+// const soma = (x, y) => {return x + y}
+// const subtracao = (x, y) => x - y
+// function multiplicacao(x,y){return x*y}
+// const divisao = function(x,y){return x/y}
+
+// const calculadora = {
+//     operacoes:{
+//         soma: soma,
+//         subtracao: subtracao,
+//         multiplicacao: multiplicacao,
+//         divisao: divisao
+//     }
+// }
+
+// console.log(calculadora.operacoes.soma(1,2))
+// console.log(calculadora.operacoes.divisao(10,5))
+// console.log(calculadora['operacoes']['subtracao'](10,2))
+// console.log(calculadora['operacoes']['multiplicacao'](5,3))
+
+// /// ou
+
+// const calculadora2 = {
+//     operacoes:{
+//         soma: (x, y) => {return x + y},
+//         subtracao: (x, y) => x - y,
+//         multiplicacao: function (x,y){return x*y},
+//         divisao: (a,b) => a/b
+//     }
+// }
+
+///////////////////////////////////////
+
+// console.log('Eu primeiro...')
+// console.log('Agora eu...')
+// console.log('Sempre serei a última...')
+/// processamento bloquenate --> sincrono
+    /// (eu primeiro) começa, bloqueia e so quando termina passa para a próxima linha
+
+// const a = 5 + 6
+// const b = 9 * 4
+// console.log(a + b)  /// depende de a e b para funcionar (sincrono -> primeiro a termina, depois b termina, então executa)
 
 
+/// simulando função demorada (ruim quando ela é bloqueante)
+
+    // function demorada(){
+    //     const dataAtualMais2Segundos = new Date().getTime() + 2000
+    //     while(new Date().getTime() <= dataAtualMais2Segundos);   /// espera ocupada -> corpo do while é o ;
+    //     const d = 8 + 2 * 6
+    //     return d
+    // }
+
+    // const a = 2 + 3
+    // const b = 6 * 1
+    // const d = demorada()
+    // const e = a + b * 2 
+    // console.log(e)  /// dica esperando e que espera d, que não influencia em e
+
+
+/// processamento assincorno
+
+    // const a = 2 + 3
+    // const b = 6 * 1
+    // setTimeout(() => {
+    //     const d = demorada()
+    //     console.log(`d: ${d}`)
+    // },500)
+    // const e = a + b * 2 
+    // console.log(`e: ${e}`)
+
+///
+
+// setTimeout(() => {
+//     console.log("Agendada pela setTimeout")
+// },0)
+// const dataAtualMais5Segundos = new Date().getDate() + 5000
+// while(new Date().getTime() <= dataAtualMais5Segundos);
+// console.log("Terminando o script principal..")
+
+// function demorada(tempo){
+//         const dataAtualMais2Segundos = new Date().getTime() + tempo
+//         while(new Date().getTime() <= dataAtualMais2Segundos);   /// espera ocupada -> corpo do while é o ;
+//         const d = 8 + 2 * 6
+//         console.log(`Demorada com tempo: ${tempo}`)
+//         return d
+//     }
+
+// setTimeout(() => {
+//     demorada(5000)
+// },0) /// entra na fila de imediato
+
+// setTimeout(() => {
+//     demorada(1000)
+// },0) /// entra na fila de imediato
+
+// console.log('Fim do script principal')
+
+// setTimeout(() => {
+//     demorada(5000)
+// },5000) /// entra na fila depois de 5 segundos
+
+// setTimeout(() => {
+//     demorada(1000)
+// },1000) /// entra na fila depois de 1 segundo
+
+// console.log('Fim do script principal')
+
+
+/// CPU Bound: predominantemente caracterizada por ciclos de cpu (ocorre em sequencia)
+/// IO Bound: predominantemente caracterizada por operações de entrada e saida (ocorre em paralelo, gerenciada pelo node)
+
+    //// callback hell -> processamento não sequencial
+
+// const fs = require('fs')    /// file system
+// const nomeArquivo = 'arquivo.txt'
+// /// função callback (define mas nunca chama)
+// const exibirConteudo = (erro, conteudo) => {
+//     console.log("A")
+//     /// se existir erro é definido, se não é undifined
+//     if(erro){
+//         console.log(`Deu erro: ${erro}`)
+//     }
+//     else{
+//         console.log(`Conteudo: ${conteudo}`)
+//         const dobro = Number(conteudo.toString()) * 2
+//         /// mais uma função callback
+//         const finalizar = erro => {
+//             console.log(erro? `Deu erro ao escrever o dobro\nerro: ${erro}` : "Ok, escreveu o dobro")
+//             console.log('C')
+//             const exibirDobro = (erro, conteudo) => {
+//                 console.log("E")
+//                 console.log(erro? `Deu erro ao lendo o dobro\nerro: ${erro}` : `Dobro: ${conteudo.toString()}`)
+//             }
+//             fs.readFile('dobro.txt',exibirDobro)
+//             console.log("F")
+//         }
+//         fs.writeFile('dobro.txt',dobro.toString(),finalizar)
+//         console.log("D")
+//     }
+// }
+// fs.readFile(nomeArquivo,exibirConteudo)
+// console.log("B")
+
+    /// promises ( permite processamento assincrono mais organizado) -> computação demorada associada
+        /// estados
+            /// Pending (ainda vai terminar)
+            /// Fullfield ( termina com sucesso)
+            /// Rejected (termina com erro)
+
+const calculoDemorado = (n) => {
+    let cont = 0
+    for(let i = 1; i <= n; i++)
+        cont += i
+    return cont
+}
+const res = calculoDemorado(1000)
+console.log(res)
