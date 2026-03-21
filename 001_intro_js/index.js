@@ -530,11 +530,46 @@
             /// Fullfield ( termina com sucesso)
             /// Rejected (termina com erro)
 
-const calculoDemorado = (n) => {
-    let cont = 0
-    for(let i = 1; i <= n; i++)
-        cont += i
-    return cont
-}
-const res = calculoDemorado(1000)
-console.log(res)
+// const calculoDemorado = (n) => {
+//     let cont = 0
+//     for(let i = 1; i <= n; i++)
+//         cont += i
+//     return cont
+// }
+// const res = calculoDemorado(1000)
+// console.log(res)
+
+/// promise -> presisa 2 funções, de sucesso e de erro
+/// resolve -> onde propaga o resultado
+// const calculoDemorado = (n) => new Promise((resolve, reject) => {
+//     if(n < 0){
+//         reject("Número negativo")
+//     }
+//     else
+//     {let ac = 0;
+//     for(let i = 1; i <= n; i++)
+//         ac += i
+//     resolve(ac)}
+// })
+
+// const minhaPromise = calculoDemorado(-1) /// minhaPromise é um objeto promise
+//     /// then/catch then <-> resolve
+// minhaPromise.then((resultado) => {console.log(`Resultado: ${resultado}`)}).catch((erro) => {console.log(`Erro: ${erro}`)})
+// console.log('A') 
+
+// const calculoRapidinho = (n) => n >= 0 ? Promise.resolve((n/2)*(n+1)): Promise.reject('Apenas valores maiores ou iguais a zero, por favor')
+
+// // calculoRapidinho(10000)
+// // .then(function(resultado){console.log(`Resultado: ${resultado}`)})
+// // .catch(erro => console.log(`Erro: ${erro}`))
+
+// calculoRapidinho(10)
+// .then((res) => {
+//     calculoRapidinho(res).then(res2 => {
+//         calculoRapidinho(res2).then(res3 => {
+//             calculoRapidinho(res3).then(res4 => {
+//                 console.log(res4)
+//             })
+//         })
+//     })
+// })

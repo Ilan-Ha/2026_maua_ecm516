@@ -1,0 +1,19 @@
+Começou com:
+
+npm init -y
+
+i (install)
+npm i axios
+
+site: openweathermap
+https://openweathermap.org/
+
+user -> my api keys (guarada em index.js)
+
+no packege.json foi em scripts e adicionou uma função chamada abc
+
+no terminal fez
+
+npm run abc
+
+trocou para dev: npm run dev
