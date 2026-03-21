@@ -19,6 +19,13 @@ axios.get(url)  /// requisição assincrona por padrão (não bloqueante) metodo
 .then(res => {
     /// mostrando temperatura maxima
     console.log(res[0].main.temp_max)
+    return res
+})
+.then(previsoes => {
+    /// iterar sobre a lista aqui
+    for(let previsao of previsoes){
+        console.log(previsao.weather[0].description)
+    }
 })
 /// axios retorna a parte tecnica e o corpo da resposta fica em [data]
 console.log('A')
