@@ -573,3 +573,63 @@
 //         })
 //     })
 // })
+
+// async function hello(nome) {
+//     return `Olá, ${nome}`
+// }   /// async -> retorna uma promise
+
+// /// promise 2015
+// /// async await 2016
+
+// const res = hello('Ana')
+// res.then((texto) => console.log(texto))
+// console.log("A")
+
+
+// const fatorial = (n) => {
+//     if (n < 0) return Promise.reject('Valor não pode ser negativo')
+//     let res = 1
+//     for(let i = 2; i <= n; i++) {
+//         res *= i}
+//     return Promise.resolve(res)
+// }
+
+// const chamadaComThenCatch = () => {
+//     fatorial(5)
+//     .then(res => console.log(`Res: ${res}`))
+//     .catch(function(erro){console.log(`Erro: ${erro}`)})
+
+//     fatorial(5)
+//     .then(res => console.log(`Res: ${res}`))
+//     .catch(function(erro){console.log(`Erro: ${erro}`)})
+
+//     /// chamada de função para cada caso
+// }
+
+// // chamadaComThenCatch()
+
+// const chamadaComAsyncAwait = async () => {
+//     // const f1 = await fatorial(5)
+//     // console.log(`f1: ${f1}`)
+//         /// não funciona por não tratar erro
+//     // const f2 = await fatorial(-1) 
+//     // console.log(`f2: ${f2}`)
+    
+//     try {
+//         const f1 = await fatorial(5)
+//         console.log(`f1: ${f1}`)
+//     } catch (error) {
+//         console.log(`Erro: ${error}`)
+//     }
+
+//     try {
+//         const f2 = await fatorial(-1) 
+//         console.log(`f2: ${f2}`)
+//     } catch (error) {
+//         console.log(`Erro: ${error}`)
+//     }
+// }
+
+// chamadaComAsyncAwait()
+
+/// os dois blocos são o mesmo, mas then catch opera com callback e try catch opera com aparencia sincrona
