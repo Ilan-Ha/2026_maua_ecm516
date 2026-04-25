@@ -1,0 +1,41 @@
+syntax sugar:
+    {id, texto} <=> { id: id, texto: texto}
+
+arquitetura monolitica -> varios serviços dentro de uma solução computacional (se um tiver que parar, todos param)
+
+arquitetura baseada em microserviços: ganha vantagens, mas se torna mais complicado
+    -> se um para, os outros conseguem se manter funcionando parcialmente
+    -> cada microserviço é mantido por uma equipe
+    -> podem ser em linguagens diferentes
+    -> pode ter bases de dados diferentes
+
+um front controler para cada microserviço (independentes uns dos outros)
+
+-> independencia --> microserviço opera mesmo que outros parem (não depende de outros ou do banco de dados dos outros)
+
+-> microserviços se comunicando:
+    - sincrona (tentando acessar a base de dados de forma indireta, não precisa saber a tecnologia do outro banco de dados)
+    - assincrona :
+        -> emite um evento
+        -> barramento de eventos recebe a requisição
+        -> evento redirecionado ao microsserviço
+        -> microserviço retorna
+        -> evento retornado ao microserviço original
+
+-> barramento de eventos: em teoria tem poder computacional o bastante para não parar e não criar gargalo (altamente resiliente, tolerante a falhas) -> dependencia ainda existe
+
+- back (varios micro serviços)
+- (pode ter) back for front
+
+-> base de dados centralizada (redundancia):
+    - base de consulta 
+    - mantém as datas também
+
+uma base para cada base de microsserviço
+uma base de consulta (armazena tudo)
+
+um microserviço controla a base de consulta
+
+///
+enviar requisições: express
+receber requisições: axios
