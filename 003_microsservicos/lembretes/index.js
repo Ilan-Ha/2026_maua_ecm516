@@ -37,7 +37,7 @@ app.get(endpoints.lembretes, (req, res) => {
 })
 
 // 2° endopoint http
-app.post(endpoints.lembretes, (req, res) => {
+app.post(endpoints.lembretes, async (req, res) => {
     // incrementar o id
     // extrair a propriedade texto do corpo da req
     // cadastrar na base, tal qual mostra o exemplo
@@ -52,6 +52,12 @@ app.post(endpoints.lembretes, (req, res) => {
     })
     
     res.status(200).send(lembretes[contador])
+})
+
+app.post('/eventos', (req, res) => {
+    const evento = req.body
+    console.log(evento)
+    res.end()
 })
 
 app.listen(port, () => {
