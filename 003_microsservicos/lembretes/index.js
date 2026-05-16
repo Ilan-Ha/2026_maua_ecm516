@@ -1,13 +1,13 @@
 const express = require('express')
+const axios = require('axios')
+
 const app = express()
 
 // função middleware
 app.use(express.json()) // se a requisição tiver um corpo, vai ser tratada como objeto javascript
 
 // base volatil
-const lembretes = {
-
-}
+const lembretes = {}
 /*
 {
     1: {
@@ -22,13 +22,14 @@ const lembretes = {
 */
 
 // contador do id
-let id = 0
+let contador = 0
 
 const port = 4000
 
 const endpoints = {
     lembretes : '/lembretes'
 }
+
 // 1° endopoint http
 app.get(endpoints.lembretes, (req, res) => {
     // devolve objeto lembretes
@@ -41,11 +42,16 @@ app.post(endpoints.lembretes, (req, res) => {
     // extrair a propriedade texto do corpo da req
     // cadastrar na base, tal qual mostra o exemplo
     // responder trocando o status para 201 e, no corpo, incluir o lembrete criado
-    id++
+    contador++
     const {texto} = req.body
-    const lembrete = {texto: texto, id: id}
-    lembretes[id] = lembrete
-    res.status(201).json(lembrete)
+    lembretes[contador] = {contador, texto}
+
+    await axios.post('http://localhost:10000/eventos', {
+        tipo: 'LembreteCriado',
+        dados: {contador, texto}
+    })
+    
+    res.status(200).send(lembretes[contador])
 })
 
 app.listen(port, () => {
