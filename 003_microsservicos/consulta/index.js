@@ -9,12 +9,19 @@ const funcoes = {
     LembreteCriado: (lembrete) => {
         baseConsulta[lembrete.constador] = lembrete
     },
-    ObservacaoCriada: (observacao) => {
+    ['Observacao.Criada']: (observacao) => {
         const observacoes = baseConsulta[observacao.lembreteId]['observacoes'] || [] // se não tiver a chave observações, vira uma lista vazia []
         observacoes.push(observacao)
         // se a lista é nova
         // para onde o ponteiro aponta
         baseConsulta[observacao.lembreteId]['observacoes'] = observacoes
+    },
+    ['Observacao.Atualizada']: (observacao) => {
+        const observacoes = 
+            baseConsulta[observacao.lembreteId]['observacoes']
+        const indice = 
+            observacoes.findIndex(o => o.id === observacao.id)
+        observacoes[indice] = observacao
     }
 }
 

@@ -6,6 +6,24 @@ app.use(express.json())
 
 const observacoesPorLembreteId = {}
 
+const funcoes = {
+    ['Observacao.Classificada']: (observacao) => {
+        const observacoes = 
+            observacoesPorLembreteId[observacao.lembreteId]
+        const obsParaAtualizar =   
+            observacoes.find(o => o.id === observacao.id)
+        obsParaAtualizar.status = observacao.status
+        axios.post('http://localhost:10000/eventos', {
+            tipo: "Observacao.Atualizada",
+            dados: {
+                id: observacao.id,
+                texto: observacao.texto,
+                lembreteId: observacao.lembreteId,
+                status: observacao.status
+            }
+        })
+    }
+}   
 //:id é um placeholder
 //exemplo: /lembretes/12/observacoes
 app.get('/lembretes/:id/observacoes', (req, res) => {
@@ -19,7 +37,7 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
 
     const observacoesDoLembrete = observacoesPorLembreteId[id] || []
 
-    observacoesDoLembrete.push({ id: idObs, texto})
+    observacoesDoLembrete.push({ id: idObs, texto, status: 'aguardando'})
 
     observacoesPorLembreteId[id] = observacoesDoLembrete
 
@@ -28,7 +46,8 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
         dados: {
             id: idObs,
             texto: texto,
-            lembreteId: id
+            lembreteId: id,
+            status: 'aguardando'
         }
     })
     
@@ -36,8 +55,9 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
 })
 
 app.post('/eventos', (req,res) => {
-    const evento = req.body
-    console.log(evento)
+    try {
+        funcoes[req.body.tipo](req.body.dados)
+    } catch (e) {}
     res.end()
 })
 
