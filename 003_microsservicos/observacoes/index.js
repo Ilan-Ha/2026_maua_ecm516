@@ -13,7 +13,7 @@ const funcoes = {
         const obsParaAtualizar =   
             observacoes.find(o => o.id === observacao.id)
         obsParaAtualizar.status = observacao.status
-        axios.post('http://localhost:10000/eventos', {
+        axios.post('http://host.docker.internal:10000/eventos', {
             tipo: "Observacao.Atualizada",
             dados: {
                 id: observacao.id,
@@ -41,8 +41,8 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
 
     observacoesPorLembreteId[id] = observacoesDoLembrete
 
-    await axios.post('http://localhost:10000/eventos', {
-        tipo: 'ObservcaoCriada',
+    await axios.post('http://host.docker.internal:10000/eventos', {
+        tipo: 'Observcao.Criada',
         dados: {
             id: idObs,
             texto: texto,

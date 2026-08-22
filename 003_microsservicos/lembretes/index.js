@@ -46,8 +46,8 @@ app.post(endpoints.lembretes, async (req, res) => {
     const {texto} = req.body
     lembretes[contador] = {contador, texto}
 
-    await axios.post('http://localhost:10000/eventos', {
-        tipo: 'LembreteCriado',
+    await axios.post('http://host.docker.internal:10000/eventos', {
+        tipo: 'Lembrete.Criado',
         dados: {contador, texto}
     })
     

@@ -12,7 +12,7 @@ const funcoes = {
             observacao.texto.includes(palavraChave)
             ? "importante"
             : "normal"
-        axios.post('http://localhost:10000/eventos',{
+        axios.post('http://host.docker.internal:10000/eventos',{
             tipo: 'Observacao.Classificada',
             dados: observacao
         })
