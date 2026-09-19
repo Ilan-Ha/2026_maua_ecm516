@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ecm516-20262-barramento-de-eventos
-          image: rodbossini/ecm516-20262-barramento-de-eventos
+          image: il4h/ecm516-20262-barramento-de-eventos:1.0.0
           resources:
             limits:
               memory: 256Mi

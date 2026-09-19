@@ -12,7 +12,7 @@ const funcoes = {
             observacao.texto.includes(palavraChave)
             ? "importante"
             : "normal"
-        axios.post('http://host.docker.internal:10000/eventos',{
+        axios.post('http://ecm516-20262-barramento-de-eventos-service:10000/eventos',{
             tipo: 'Observacao.Classificada',
             dados: observacao
         })

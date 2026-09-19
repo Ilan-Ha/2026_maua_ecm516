@@ -47,7 +47,7 @@ app.post(endpoints.lembretes, async (req, res) => {
     lembretes[contador] = {contador, texto}
     //host.docker.internal
     await axios.post('http://ecm516-20262-barramento-de-eventos-service:10000/eventos', {
-        tipo: 'Lembrete.Criado',
+        tipo: 'LembreteCriado',
         dados: {contador, texto}
     })
     
