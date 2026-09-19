@@ -12,7 +12,7 @@ app.post('/eventos', async function(req, res){
   const evento = req.body
   console.log(evento)
   try{
-    await axios.post(url+':4000/eventos', evento)
+    await axios.post('ecm516-20262-lembretes-clusterip-service'+':4000/eventos', evento)
   }
   catch(e){}
   try{

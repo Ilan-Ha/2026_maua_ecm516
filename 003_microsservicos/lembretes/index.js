@@ -45,8 +45,8 @@ app.post(endpoints.lembretes, async (req, res) => {
     contador++
     const {texto} = req.body
     lembretes[contador] = {contador, texto}
-
-    await axios.post('http://host.docker.internal:10000/eventos', {
+    //host.docker.internal
+    await axios.post('http://ecm516-20262-barramento-de-eventos-service:10000/eventos', {
         tipo: 'Lembrete.Criado',
         dados: {contador, texto}
     })
@@ -61,5 +61,7 @@ app.post('/eventos', (req, res) => {
 })
 
 app.listen(port, () => {
+    console.log('Nova versão')
+    console.log('Agora usando o Docker Hub')
     console.log(`Lembretes. Porta ${port}.`)
 })
